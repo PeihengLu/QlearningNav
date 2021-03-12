@@ -29,3 +29,16 @@ sns.histplot(data=easy.time, binwidth=100, ax=axs)
 axs.set_xlim(0, 10000)
 axs.set_ylim(0, 30)
 fig.savefig('medium.png')
+
+rewardsHard = pd.read_excel(os.path.join(os.getcwd(), "rewardsHard.csv"))
+time = rewardsHard.iloc[:, 0]
+reward = rewardsHard.iloc[:, 1]
+d = {'time': time, 'reward': reward}
+easy = pd.DataFrame(data=d)
+easy = easy[easy.reward == 1]
+
+fig, axs = plt.subplots()
+sns.histplot(data=easy.time, binwidth=100, ax=axs)
+axs.set_xlim(0, 10000)
+axs.set_ylim(0, 30)
+fig.savefig('hard.png')
